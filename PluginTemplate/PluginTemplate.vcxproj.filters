@@ -42,6 +42,9 @@
     <Filter Include="Library Files">
       <UniqueIdentifier>{83b94fba-0963-43a4-b8bd-12730a208fad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\qq_data">
+      <UniqueIdentifier>{55e95164-71bd-44f1-b935-25bdc3f643bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pluginsdk\capstone\arm.h">
@@ -281,6 +284,12 @@
     <ClInclude Include="pluginmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qq_datadefs.h">
+      <Filter>Source Files\qq_data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="pluginsdk\x32bridge.lib">
@@ -344,6 +353,15 @@
     </ClCompile>
     <ClCompile Include="pluginmain.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qq_datadefs.cpp">
+      <Filter>Source Files\qq_data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

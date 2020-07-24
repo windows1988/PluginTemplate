@@ -3,7 +3,7 @@
 #include "pluginmain.h"
 
 //plugin data
-#define PLUGIN_NAME "$safeprojectname$"
+#define PLUGIN_NAME "QQHelper"
 #define PLUGIN_VERSION 1
 
 //functions

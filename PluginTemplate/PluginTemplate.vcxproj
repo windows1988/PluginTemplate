@@ -22,6 +22,7 @@
     <ProjectGuid>{176822C9-3CF8-41A9-81AB-8BBD3E3E2A32}</ProjectGuid>
     <RootNamespace>PluginTemplate</RootNamespace>
     <ProjectName>PluginTemplate</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -34,7 +35,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -92,6 +93,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -111,6 +113,7 @@
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -119,6 +122,12 @@
       <SubSystem>Windows</SubSystem>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
+    <PreLinkEvent>
+      <Command>if exist "$(ProjectDir)PluginDevBuildTool.exe" ("$(ProjectDir)PluginDevBuildTool.exe" unload "$(TargetPath)")</Command>
+    </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>if exist "$(ProjectDir)PluginDevBuildTool.exe" ("$(ProjectDir)PluginDevBuildTool.exe" reload "$(TargetPath)")</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -157,10 +166,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="log.cpp" />
+    <ClCompile Include="OM.cpp" />
     <ClCompile Include="plugin.cpp" />
     <ClCompile Include="pluginmain.cpp" />
+    <ClCompile Include="qq_datadefs.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OM.h" />
     <ClInclude Include="plugin.h" />
     <ClInclude Include="pluginmain.h" />
     <ClInclude Include="pluginsdk\bridgegraph.h" />
@@ -240,6 +253,7 @@
     <ClInclude Include="pluginsdk\_scriptapi_register.h" />
     <ClInclude Include="pluginsdk\_scriptapi_stack.h" />
     <ClInclude Include="pluginsdk\_scriptapi_symbol.h" />
+    <ClInclude Include="qq_datadefs.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="pluginsdk\capstone\capstone_x64.lib">
